@@ -36,17 +36,17 @@
                             <v-icon small @click="initDeleteItem(item)">delete</v-icon>
                         </template>
 
-                        <template v-slot:item.startDate="{ item }">
-                            {{ item.startDate | moment("DD/MM/YYYY") }}
+                        <template v-slot:item.date_created="{ item }">
+                            {{ item.date_created | moment("DD/MM/YYYY") }}
                         </template>
-                        <template v-slot:item.endDate="{ item }">
-                            {{ item.endDate | moment("DD/MM/YYYY") }}
+                        <template v-slot:item.date_updated="{ item }">
+                            {{ item.date_updated | moment("DD/MM/YYYY") }}
                         </template>
                     </v-data-table>
                 </v-col>
             </v-row>
             <projectAddEditComponent 
-            v-on:projectUpdated="getProjects()"
+            v-on:projectUpdated="getBrands()"
             v-on:projectCreated="projectUpdated"
             :projectId="currentProjectId" 
             :showDialog.sync="showAddEditDialog" 
@@ -81,11 +81,9 @@ export default {
             search: "",
             headers: [
                 { text: this.$t("name"), value: "name", sortable: false},
-                { text: this.$t("client"), value: "client", sortable: false },
-                { text: this.$t("cost"), value: "totalCost", sortable: false },
-                { text: this.$t("total_area"), value: "areaTotalSize", sortable: false },
-                { text: this.$t("starting_date"), value: "startDate", sortable: false },
-                { text: this.$t("ending_date"), value: "endDate", sortable: false },
+                { text: this.$t("categories"), value: "categories", sortable: false },
+                { text: this.$t("date_created"), value: "date_created", sortable: false },
+                { text: this.$t("date_updated"), value: "date_updated", sortable: false },
                 { text: "Actions", value: "action", sortable: false }
             ],
             projects: [],
@@ -100,7 +98,7 @@ export default {
         };
     },
     methods: {
-        async getProjects() {
+        async getBrands() {
             try {
                 this.loading = true;
                 const resp = await getAll();
@@ -140,7 +138,7 @@ export default {
                     this.showSuccess(response.data.result.message.message_en);
                 }
                 this.showDeleteDialog = false;
-                this.getProjects();
+                this.getBrands();
             } catch (error) {
                 this.showDeleteDialog = false;
                 this.loading = false;
@@ -159,17 +157,14 @@ export default {
             this.showSnackbar = true;
         },
         projectUpdated(response){
-            this.getProjects();
+            this.getBrands();
             this.showSuccess(response.result.message.message_en);
         }
     },
-    computed: {
-
-    },
-    watch: {
-    },
+    computed: {},
+    watch: {},
     mounted() {
-        this.getProjects();
+        this.getBrands();
     }
 };
 </script>

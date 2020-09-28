@@ -32,6 +32,8 @@
     "new_project": "New Project",
     "edit_project": "Edit Project",
     "total_project_area_size": "Total Project Area Size",
-    "brands": "Brands"
-
+    "brands": "Brands",
+    "date_created": "Date Created",
+    "date_updated": "Date Updated",
+    "categories": "Categories"
 }

@@ -33,5 +33,8 @@
     "new_project": "مشروع جديد",
     "edit_project": "تعديل مشروع",
     "total_project_area_size": "المساحة الكلية للمشروع",
-    "brands": "Brands"
+    "brands": "Brands",
+    "date_created": "Date Created",
+    "date_updated": "Date Updated",
+    "categories": "Categories"
 }
