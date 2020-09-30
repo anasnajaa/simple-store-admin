@@ -7,7 +7,7 @@ const getProfile = () => httpClient.get(END_POINT + `profile`);
 
 const logout = () => httpClient.post(END_POINT + `logout`);
 
-const login = (username, password) => httpClient.post(END_POINT + "login", { username, password });
+const login = (username, password) => httpClient.post(END_POINT + "login/admin", { username, password });
 
 const register = (
     email, password, 
